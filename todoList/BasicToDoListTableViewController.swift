@@ -10,7 +10,7 @@ import UIKit
 
 class BasicToDoListTableViewController: UITableViewController {
     
-    var toDoItems: [BasicToDoItem];
+    var toDoItems: [BasicToDoItem] = [];
 
 
     override func viewDidLoad() {
