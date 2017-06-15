@@ -44,7 +44,12 @@ class BasicToDoListTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
-        
+        let source: BasicAddToDoItemViewController = segue.source as! BasicAddToDoItemViewController;
+        let item: BasicToDoItem =  source.toDoItem;
+        if (!item.itemName.isEmpty) {
+            toDoItems.append(item);
+        }
+        self.tableView.reloadData()
     }
     
     func loadInitialData () {
@@ -66,6 +71,7 @@ class BasicToDoListTableViewController: UITableViewController {
         }
 
         return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

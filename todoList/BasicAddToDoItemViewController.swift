@@ -9,6 +9,10 @@
 import UIKit
 
 class BasicAddToDoItemViewController: UIViewController {
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var textField: UITextField!
+    
+    var toDoItem: BasicToDoItem = BasicToDoItem(itemName: "", completed: false, creationDate: Date.init())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,15 @@ class BasicAddToDoItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (sender as? UIBarButtonItem != self.doneButton ) {
+            return;
+        }
+        if ((self.textField.text?.characters.count)! > 0) {
+            self.toDoItem.itemName = self.textField.text!;
+            self.toDoItem.completed = false;
+        }
+    }
 
     /*
     // MARK: - Navigation
